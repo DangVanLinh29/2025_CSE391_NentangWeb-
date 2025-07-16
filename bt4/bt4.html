@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập 04 - Form thông tin</title>
+    
+</head>
+<body>
+
+    <form class="employee-form">
+        <fieldset>
+            <legend>Basic Info</legend>
+            <div class="form-row">
+                <label for="employee-id">Employee ID</label>
+                <input type="text" id="employee-id" name="employee-id" value="9" disabled>
+            </div>
+            <div class="form-row">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name" value="Dodsworth" required>
+            </div>
+            <div class="form-row">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" value="Anne" required>
+            </div>
+            <div class="form-row">
+                <label>Gender</label>
+                <div class="radio-group">
+                    <input type="radio" id="male" name="gender" value="male"> <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female" checked> <label for="female">Female</label>
+                    <input type="radio" id="xxx" name="gender" value="xxx"> <label for="xxx">XXX</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <label for="title">Title</label>
+                <select id="title" name="title">
+                    <option value="Sales Representative" selected>Sales Representative</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Developer">Developer</option>
+                </select>
+            </div>
+            <div class="form-row">
+                 <label for="birth-date">BirthDate</label>
+                 <input type="date" id="birth-date" name="birth-date" value="1989-07-02">
+            </div>
+            <div class="form-row">
+                 <label for="hire-date">HireDate</label>
+                 <input type="date" id="hire-date" name="hire-date" value="1994-11-15">
+            </div>
+             <div class="form-row">
+                <label for="reports-to">Reports To</label>
+                <select id="reports-to" name="reports-to">
+                    <option value="Buchanan" selected>Buchanan</option>
+                    <option value="Fuller">Fuller</option>
+                </select>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Contact Info</legend>
+             <div class="form-row">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="name@example.com">
+            </div>
+            <div class="form-row">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" value="7 Houndstooth Rd.">
+            </div>
+             <div class="form-row">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" value="London">
+            </div>
+            <div class="form-row">
+                <label for="postal-code">Postal Code</label>
+                <input type="text" id="postal-code" name="postal-code" value="WG2 7LT">
+            </div>
+            <div class="form-row">
+                <label for="country">Country</label>
+                 <select id="country" name="country">
+                    <option value="UK">United Kingdom</option>
+                    <option value="USA">United States</option>
+                    <option value="Vietnam" selected>Vietnam</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label for="phone">US Home Phone</label>
+                <input type="tel" id="phone" name="phone" value="(71) 555-4444">
+            </div>
+             <div class="form-row">
+                <label for="photo">Photo</label>
+                <input type="text" id="photo" name="photo" value="Email06.bmp">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Optional Info</legend>
+            <div class="form-row">
+                <label for="notes">Notes</label>
+                <textarea id="notes" name="notes" rows="4">Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German ZZZ.</textarea>
+            </div>
+            <div class="form-row">
+                <label>Preferred Shift</label>
+                 <div class="radio-group">
+                    <input type="radio" id="regular" name="shift" value="regular" checked> <label for="regular">Regular</label>
+                    <input type="radio" id="crazy" name="shift" value="crazy"> <label for="crazy">Crazy Yard</label>
+                </div>
+            </div>
+             <div class="form-row">
+                 <label></label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="active" name="active" checked>
+                    <label for="active">Active?</label>
+                </div>
+            </div>
+             <div class="form-row">
+                <label for="captcha">Are you human?</label>
+                <div class="captcha-area">
+                    <span class="captcha-code">TIDAWO</span>
+                    <button type="button" class="change-captcha">Click to change</button>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="form-footer">
+            <span>* required</span>
+            <div class="buttons">
+                <button type="submit" class="btn btn-submit">Submit</button>
+                <button type="button" class="btn btn-cancel">Cancel</button>
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
+
