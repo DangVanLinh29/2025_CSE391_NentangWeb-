@@ -7,6 +7,7 @@
 </head>
 <body>
     <div class="container">
+        <div id="thongBao" style="color: green; margin-bottom: 10px;"></div>
         <h2>Thêm sinh viên</h2>
         <form>
             <div class="form-row">
@@ -25,7 +26,7 @@
                 <label for="ngaysinh">Ngày sinh</label>
                 <input type="date" id="ngaysinh" name="ngaysinh">
             </div>
-            <div class="form-row">
+            <div class="form-row-1">
                 <label>Giới tính</label>
                 <div class="radio-group">
                     <label><input type="radio" name="gioitinh" value="Nam"> Nam</label>
@@ -37,12 +38,12 @@
                 <textarea id="ghichu" name="ghichu" rows="2"></textarea>
             </div>
             <div class="form-row">
-                <button type="submit" class="btn">Thêm sinh viên</button>
+                <button type="submit" class="btn" id="btnThem">Thêm sinh viên</button>
             </div>
         </form>
 
         <h2>Danh sách sinh viên</h2>
-        <table>
+        <table id="bangSinhVien">
             <thead>
                 <tr>
                     <th>STT</th>
@@ -94,5 +95,7 @@
             </tbody>
         </table>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

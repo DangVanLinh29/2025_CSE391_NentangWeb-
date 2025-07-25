@@ -1,0 +1,70 @@
+body {
+    background: #f4f8fb;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+.hello-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    text-align: center;
+}
+#helloForm label,
+#sumForm label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 12px;
+    color: #1769aa;
+    font-weight: bold;
+}
+#yourName,
+#num1,
+#num2 {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #bcdffb;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 18px;
+    outline: none;
+    transition: border 0.2s;
+}
+#yourName:focus,
+#num1:focus,
+#num2:focus {
+    border: 1.5px solid #2196F3;
+}
+#helloForm button,
+#sumForm button {
+    background: #2196F3;
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+    margin-top: 8px;
+}
+#helloForm button:hover,
+#sumForm button:hover {
+    background: #1769aa;
+}
+#sumResult {
+    margin-top: 18px;
+    font-weight: bold;
+    color: #1769aa;
+    font-size: 1.15em;
+    letter-spacing: 1px;
+}
+hr {
+    border: none;
+    border-top: 2px solid #e0e0e0;
+    margin: 32px 0;
+}
