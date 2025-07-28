@@ -1,6 +1,5 @@
 let editingRow = null;
 
-// Chuyển đổi các <a> Sửa/Xóa mẫu thành <button> khi trang load
 window.addEventListener('DOMContentLoaded', function() {
     const table = document.getElementById("bangSinhVien").getElementsByTagName("tbody")[0];
     for (let row of table.rows) {
@@ -27,7 +26,7 @@ document.getElementById("btnThem").addEventListener("click", function (event) {
     }
 
     if (editingRow) {
-        // Cập nhật dòng đang sửa
+    
         editingRow.cells[1].innerText = masv;
         editingRow.cells[2].innerText = hoten;
         editingRow.cells[3].innerText = email;
@@ -40,7 +39,7 @@ document.getElementById("btnThem").addEventListener("click", function (event) {
         editingRow = null;
         document.getElementById("btnThem").innerText = "Thêm sinh viên";
     } else {
-        // Thêm dòng mới vào bảng
+        
         let table = document.getElementById("bangSinhVien").getElementsByTagName("tbody")[0];
         let newRow = table.insertRow();
         let stt = table.rows.length;
@@ -59,7 +58,7 @@ document.getElementById("btnThem").addEventListener("click", function (event) {
     document.querySelector("form").reset();
 });
 
-/*function xoaDong(btn) {
+function xoaDong(btn) {
     let row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
     let table = document.getElementById("bangSinhVien").getElementsByTagName("tbody")[0];
@@ -86,4 +85,4 @@ function suaDong(btn) {
     }
     document.getElementById("ngaysinh").value = row.cells[5].innerText;
     document.getElementById("btnThem").innerText = "Cập nhật";
-}*/
+}
