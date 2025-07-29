@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="add_employee.css">
+</head>
+<body style="background: #f4f6f9;">
+    <div class="center-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Add Employee</span>
+                <a href="index.html" class="modal-close" style="text-decoration:none">&times;</a>
+            </div>
+            <form class="modal-form">
+                <label>Name</label>
+                <input type="text" name="name" required>
+                <label>Email</label>
+                <input type="email" name="email" required>
+                <label>Address</label>
+                <textarea name="address" rows="2" required></textarea>
+                <label>Phone</label>
+                <input type="text" name="phone" required>
+                <div class="modal-actions">
+                    <a href="index.html" class="modal-cancel" style="text-decoration:none">Cancel</a>
+                    <button type="submit" class="modal-add">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
