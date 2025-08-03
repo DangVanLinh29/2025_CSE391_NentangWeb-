@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý khách hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="#" class="logo">Trường Đại học Thủy lợi</a>
+            </div>
+            <div class="header-right">
+                <nav class="main-nav">
+                    <a href="#">Trang chủ</a>
+                    <a href="#">Quản lý cửa hàng</a>
+                </nav>
+                <div class="user-menu">
+                    <input type="text" class="search-input" placeholder="Nhập nội dung tìm kiếm">
+                    <button class="search-btn">TÌM KIẾM</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="content-wrapper">
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <button class="btn btn-primary">THÊM MỚI</button>
+                    <button class="btn btn-secondary">XUẤT RA FILE</button>
+                </div>
+                <div class="toolbar-center">
+                    <input type="text" class="search-input" placeholder="Tìm kiếm theo Tên">
+                    <button class="search-icon">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+                <div class="toolbar-right">
+                    <span>Kết quả</span>
+                    <select class="results-select">
+                        <option>20</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Hành động</th>
+                            <th>STT</th>
+                            <th>Tên</th>
+                            <th>Họ đệm</th>
+                            <th>Địa chỉ</th>
+                            <th>Hoạt động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-times"></i></button>
+                                </div>
+                            </td>
+                            <td>1</td>
+                            <td>Mai</td>
+                            <td>Thục Anh</td>
+                            <td>23 Hoàng Đạo Thúy, Thanh Xuân, Hà Nội</td>
+                            <td><span class="status-badge active"><i class="fas fa-check-circle"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-times"></i></button>
+                                </div>
+                            </td>
+                            <td>2</td>
+                            <td>Hoàng</td>
+                            <td>Sinh Hồng</td>
+                            <td>23 Hoàng Đạo Thúy, Thanh Xuân, Hà Nội</td>
+                            <td><span class="status-badge inactive"><i class="fas fa-times-circle"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-times"></i></button>
+                                </div>
+                            </td>
+                            <td>3</td>
+                            <td>Tính</td>
+                            <td>Mai Trung</td>
+                            <td>1411 Đường Láng, Cầu Giấy, Hà Nội</td>
+                            <td><span class="status-badge active"><i class="fas fa-check-circle"></i></span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox">
+                            </td>
+                            <td>
+                                <div class="action-buttons">
+                                    <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                    <button class="btn-delete"><i class="fas fa-times"></i></button>
+                                </div>
+                            </td>
+                            <td>4</td>
+                            <td>Hoàng</td>
+                            <td>Nguyễn Văn</td>
+                            <td>1411 Đường Láng, Cầu Giấy, Hà Nội</td>
+                            <td><span class="status-badge inactive"><i class="fas fa-times-circle"></i></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <span class="results-text">Kết quả 1 đến 4</span>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>TRƯỜNG ĐẠI HỌC THỦY LỢI</h3>
+            <p>Địa chỉ: 175 Tây Sơn, Đống Đa, Hà Nội</p>
+            <p>Điện thoại: (024) 38522201 - Fax: (024) 35633351</p>
+            <a href="#">Email: phongctct@tlu.edu.vn</a>
+        </div>
+    </footer>
+</body>
+</html>
