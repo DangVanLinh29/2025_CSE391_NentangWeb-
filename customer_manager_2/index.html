@@ -6,6 +6,7 @@
     <title>Quản lý khách hàng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header class="header">
@@ -53,7 +54,7 @@
                 <table class="data-table">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th><input type="checkbox" id="selectAll"></th>
                             <th>Hành động</th>
                             <th>STT</th>
                             <th>Tên</th>
@@ -181,49 +182,222 @@
     </footer>
 
     <script>
-        // Modal functionality
-        const modal = document.getElementById('addCustomerModal');
-        const addNewBtn = document.querySelector('.btn-primary');
-        const closeBtn = document.querySelector('.close');
-        const cancelBtn = document.getElementById('cancelBtn');
-        const addBtn = document.getElementById('addBtn');
-        const form = document.getElementById('addCustomerForm');
+        $(document).ready(function() {
+            // Modal functionality with jQuery
+            const $modal = $('#addCustomerModal');
+            const $addNewBtn = $('.btn-primary');
+            const $closeBtn = $('.close');
+            const $cancelBtn = $('#cancelBtn');
+            const $addBtn = $('#addBtn');
+            const $form = $('#addCustomerForm');
 
-        // Open modal
-        addNewBtn.addEventListener('click', function() {
-            modal.style.display = 'block';
-        });
+            // Open modal with fade effect
+            $addNewBtn.on('click', function() {
+                $modal.fadeIn(300);
+            });
 
-        // Close modal
-        function closeModal() {
-            modal.style.display = 'none';
-            form.reset();
-        }
-
-        closeBtn.addEventListener('click', closeModal);
-        cancelBtn.addEventListener('click', closeModal);
-
-        // Close modal when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                closeModal();
+            // Close modal function
+            function closeModal() {
+                $modal.fadeOut(300);
+                $form[0].reset();
             }
-        });
 
-        // Add customer functionality
-        addBtn.addEventListener('click', function() {
-            const name = document.getElementById('customerName').value;
-            const lastName = document.getElementById('customerLastName').value;
-            const address = document.getElementById('customerAddress').value;
+            // Close modal events
+            $closeBtn.on('click', closeModal);
+            $cancelBtn.on('click', closeModal);
 
-            if (name && lastName && address) {
-                // Here you would typically add the customer to your data
-                console.log('Adding customer:', { name, lastName, address });
-                closeModal();
-                // You can add code here to update the table with the new customer
-            } else {
-                alert('Vui lòng điền đầy đủ thông tin!');
+            // Close modal when clicking outside
+            $(window).on('click', function(event) {
+                if (event.target === $modal[0]) {
+                    closeModal();
+                }
+            });
+
+            // Add customer functionality with validation
+            $addBtn.on('click', function() {
+                const name = $('#customerName').val().trim();
+                const lastName = $('#customerLastName').val().trim();
+                const address = $('#customerAddress').val().trim();
+
+                // Remove previous error states
+                $('.form-group').removeClass('error');
+                $('.error-message').remove();
+
+                let hasError = false;
+
+                // Validation
+                if (!name) {
+                    $('#customerName').closest('.form-group').addClass('error');
+                    $('#customerName').after('<span class="error-message">Vui lòng nhập tên</span>');
+                    hasError = true;
+                }
+
+                if (!lastName) {
+                    $('#customerLastName').closest('.form-group').addClass('error');
+                    $('#customerLastName').after('<span class="error-message">Vui lòng nhập họ đệm</span>');
+                    hasError = true;
+                }
+
+                if (!address) {
+                    $('#customerAddress').closest('.form-group').addClass('error');
+                    $('#customerAddress').after('<span class="error-message">Vui lòng nhập địa chỉ</span>');
+                    hasError = true;
+                }
+
+                if (!hasError) {
+                    // Add customer to table
+                    addCustomerToTable(name, lastName, address);
+                    closeModal();
+                    
+                    // Show success message
+                    showNotification('Thêm khách hàng thành công!', 'success');
+                }
+            });
+
+            // Add customer to table function
+            function addCustomerToTable(name, lastName, address) {
+                const newRow = `
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-view"><i class="fas fa-eye"></i></button>
+                                <button class="btn-edit"><i class="fas fa-edit"></i></button>
+                                <button class="btn-delete"><i class="fas fa-times"></i></button>
+                            </div>
+                        </td>
+                        <td>${$('.data-table tbody tr').length + 1}</td>
+                        <td>${name}</td>
+                        <td>${lastName}</td>
+                        <td>${address}</td>
+                        <td><span class="status-badge active"><i class="fas fa-check-circle"></i></span></td>
+                    </tr>
+                `;
+                
+                $('.data-table tbody').append(newRow);
+                updateResultsCount();
             }
+
+            // Update results count
+            function updateResultsCount() {
+                const totalRows = $('.data-table tbody tr').length;
+                $('.results-text').text(`Kết quả 1 đến ${totalRows}`);
+            }
+
+            // Show notification function
+            function showNotification(message, type) {
+                const notification = $(`
+                    <div class="notification ${type}">
+                        <span>${message}</span>
+                        <button class="notification-close">&times;</button>
+                    </div>
+                `);
+                
+                $('body').append(notification);
+                notification.fadeIn(300);
+                
+                // Auto remove after 3 seconds
+                setTimeout(function() {
+                    notification.fadeOut(300, function() {
+                        $(this).remove();
+                    });
+                }, 3000);
+                
+                // Manual close
+                notification.find('.notification-close').on('click', function() {
+                    notification.fadeOut(300, function() {
+                        $(this).remove();
+                    });
+                });
+            }
+
+            // Delete row functionality
+            $(document).on('click', '.btn-delete', function() {
+                const $row = $(this).closest('tr');
+                if (confirm('Bạn có chắc chắn muốn xóa khách hàng này?')) {
+                    $row.fadeOut(300, function() {
+                        $(this).remove();
+                        updateResultsCount();
+                        showNotification('Đã xóa khách hàng!', 'info');
+                    });
+                }
+            });
+
+            // Edit row functionality
+            $(document).on('click', '.btn-edit', function() {
+                const $row = $(this).closest('tr');
+                const name = $row.find('td:eq(3)').text();
+                const lastName = $row.find('td:eq(4)').text();
+                const address = $row.find('td:eq(5)').text();
+                
+                // Populate modal with current data
+                $('#customerName').val(name);
+                $('#customerLastName').val(lastName);
+                $('#customerAddress').val(address);
+                
+                // Change modal title and button
+                $('.modal-header h2').text('Chỉnh sửa Khách hàng');
+                $addBtn.text('Cập nhật');
+                
+                // Show modal
+                $modal.fadeIn(300);
+                
+                // Update button functionality for edit mode
+                $addBtn.off('click').on('click', function() {
+                    const newName = $('#customerName').val().trim();
+                    const newLastName = $('#customerLastName').val().trim();
+                    const newAddress = $('#customerAddress').val().trim();
+                    
+                    if (newName && newLastName && newAddress) {
+                        $row.find('td:eq(3)').text(newName);
+                        $row.find('td:eq(4)').text(newLastName);
+                        $row.find('td:eq(5)').text(newAddress);
+                        
+                        closeModal();
+                        showNotification('Cập nhật khách hàng thành công!', 'success');
+                        
+                        // Reset modal for add mode
+                        $('.modal-header h2').text('Thêm Khách hàng');
+                        $addBtn.text('Thêm');
+                    }
+                });
+            });
+
+            // Search functionality
+            $('.toolbar-center .search-input').on('keyup', function() {
+                const searchTerm = $(this).val().toLowerCase();
+                
+                $('.data-table tbody tr').each(function() {
+                    const name = $(this).find('td:eq(3)').text().toLowerCase();
+                    const lastName = $(this).find('td:eq(4)').text().toLowerCase();
+                    
+                    if (name.includes(searchTerm) || lastName.includes(searchTerm)) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
+            // Select all functionality
+            $('.data-table thead input[type="checkbox"]').on('change', function() {
+                const isChecked = $(this).is(':checked');
+                $('.data-table tbody input[type="checkbox"]').prop('checked', isChecked);
+            });
+
+            // Individual checkbox functionality
+            $(document).on('change', '.data-table tbody input[type="checkbox"]', function() {
+                const totalCheckboxes = $('.data-table tbody input[type="checkbox"]').length;
+                const checkedCheckboxes = $('.data-table tbody input[type="checkbox"]:checked').length;
+                
+                if (checkedCheckboxes === totalCheckboxes) {
+                    $('.data-table thead input[type="checkbox"]').prop('checked', true);
+                } else {
+                    $('.data-table thead input[type="checkbox"]').prop('checked', false);
+                }
+            });
         });
     </script>
 </body>
