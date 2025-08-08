@@ -1,138 +1,235 @@
-/* Định dạng chung */
-body {
-    background: #f4f4f4;
-    font-family: Arial, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
 .container {
-    max-width: 700px;
-    margin: 40px auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 32px 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-/* Tiêu đề form */
-h2 {
-    background: #2196F3;
-    color: #fff;
-    padding: 12px;
-    border-radius: 6px;
-    text-align: center;
-    margin-bottom: 24px;
-}
-
-/* Form sinh viên */
-form {
-    margin-bottom: 32px;
-}
-.form-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 18px;
-}
-.form-row label {
-    flex-basis: 120px;
-    font-weight: 500;
-    margin-right: 12px;
-}
-.form-row input,
-.form-row textarea {
-    flex-grow: 1;
-    padding: 8px;
-    border: 1px solid #ccc;
+#thongBao {
+    padding: 10px;
     border-radius: 4px;
-    font-size: 1em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    display: none;
 }
-.form-row textarea {
-    resize: vertical;
+
+h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* Form Styles */
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.form-row {
+    margin-bottom: 20px;
 }
 
 .form-row-1 {
-    display: flex;
-    align-items: center;
-    margin-bottom: 18px;
-    label{
-        flex-basis: 120px;
-        font-weight: 500;
-        margin-right: 12px;
-    }
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
 }
 
 .radio-group {
     display: flex;
-    flex-grow: 1;
+    gap: 20px;
 }
 
-/* Button */
+.radio-group label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 8px;
+    width: auto;
+}
+
 .btn {
-    background: #2196F3;
-    color: #fff;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
     border: none;
-    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1em;
-    transition: background 0.2s;
-}
-.btn:hover {
-    background: #1769aa;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
-/* Bảng danh sách sinh viên */
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* Search Styles */
+.search-container {
+    margin-bottom: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+/* Table Styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 24px;
-    background: #fff;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
+
 thead {
-    background-color: #1769aa;
-    color: #fff;
+    background-color: #2c3e50;
+    color: white;
 }
-th, td {
-    border: 1px solid #bbb;
-    padding: 10px;
-    text-align: center;
-    vertical-align: middle;
+
+th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
 }
-td:nth-child(3), td:nth-child(4) {
-    max-width: 180px;
-    word-break: break-word;
-    white-space: normal;
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
 }
-td:last-child {
-    white-space: nowrap;
-}
-td:last-child button {
-    display: inline-block;
-    margin: 0 4px;
-    vertical-align: middle;
-}
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
+
 tbody tr:hover {
-    background-color: #e0e0e0;
-    text-decoration: none;
+    background-color: #f8f9fa;
 }
-/* Nút Sửa, Xóa trong bảng */
-table button {
-    background: #2196F3;
-    color: #fff;
+
+/* Button Styles */
+.btn-sua, .btn-xoa {
+    padding: 6px 12px;
     border: none;
-    padding: 5px 12px;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1em;
-    margin: 0 2px;
-    transition: background 0.2s;
+    font-size: 14px;
+    margin-right: 5px;
+    transition: background-color 0.3s ease;
 }
-table button:hover {
-    background: #1769aa;
+
+.btn-sua {
+    background-color: #f39c12;
+    color: white;
 }
-th:last-child, td:last-child {
-    text-align: center;
+
+.btn-sua:hover {
+    background-color: #e67e22;
+}
+
+.btn-xoa {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-xoa:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    form {
+        padding: 15px;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    table {
+        font-size: 14px;
+    }
+    
+    th, td {
+        padding: 8px;
+    }
+    
+    .btn-sua, .btn-xoa {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+form, table {
+    animation: fadeIn 0.5s ease-in-out;
 }
